@@ -57,20 +57,20 @@ public class CameraFollow : Singleton<CameraFollow>
         targetRotate = offsets[(int)state].localRotation;
         return;
 
-        switch (state)
-        {
-            case State.MainMenu:
-                targetOffset = playerOffset;
-                targetRotate = Quaternion.Euler(playerRotate);
-                break;
+        //switch (state)
+        //{
+        //    case State.MainMenu:
+        //        targetOffset = playerOffset;
+        //        targetRotate = Quaternion.Euler(playerRotate);
+        //        break;
 
-            case State.Gameplay:
-                targetOffset = offsetMin;
-                targetRotate = Quaternion.Euler(gamePlayRotate);
-                break;
+        //    case State.Gameplay:
+        //        targetOffset = offsetMin;
+        //        targetRotate = Quaternion.Euler(gamePlayRotate);
+        //        break;
 
-            default:
-                break;
-        }
+        //    default:
+        //        break;
+        //}
     }
 }

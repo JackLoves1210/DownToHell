@@ -145,10 +145,22 @@ public enum PoolType
 {
     None,
 
-    Bullet_1,
-    Bullet_2,
-    Bullet_3,
-    Bullet_4,
+    Bot,
+
+    S_Exp,
+    B_Exp,
+
+    Gun,
+    Cone,
+    Circle,
+
+    MachineGun,
+    ShootGon,
+    Sniper,
+    FlameThrower,
+    Acid,
+    ElectricZone,
+    AtomicZone,
 }
 
 

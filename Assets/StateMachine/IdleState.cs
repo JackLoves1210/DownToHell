@@ -11,7 +11,7 @@ public class IdleState : IState<Bot>
 
     public void OnExecute(Bot t)
     {
-
+        t.ChangeState(new PatrolState());
     }
 
     public void OnExit(Bot t)

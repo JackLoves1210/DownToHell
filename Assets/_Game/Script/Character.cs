@@ -4,13 +4,64 @@ using UnityEngine;
 
 public class Character : GameUnit
 {
-    [SerializeField] Animator animator;
-    private string currentAnim;
+    [Header("Character")]
 
-    public virtual void OnInit() { }
+    [SerializeField] Animator animator;
+
+    public int baseDame;
+    public int moveSpeed;
+    public int armor;
+    public float critRate;
+    public float critDamage;
+    public int maxHp;
+    public float hp;
+
+    public bool IsDead { get; protected set; }
+    private string currentAnim;
+    public virtual void OnInit() 
+    {
+        hp = maxHp;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        int ramdomNum = Random.Range(0, 101);
+        if (ramdomNum <= critRate)
+        {
+            hp -= critDamage * damage - (critDamage * damage * armor / 100);
+        }
+        else
+        {
+            hp -= damage - (damage * armor / 100);
+        }
+
+        if (hp < 0)
+        {
+            hp = 0;
+        }
+    }
+    public void HealHp(int healHP)
+    {
+        hp += healHP;
+        if (hp > maxHp)
+        {
+            hp = maxHp;
+        }
+    }
+    public void DealDamage(GameObject target)
+    {
+        var atm = target.GetComponent<Character>();
+        if (atm != null)
+        {
+            atm.TakeDamage(baseDame);
+        }
+    }
     public virtual void OnHit() { }
     public virtual void OnDeath() { }
-
+    public virtual void OnAttack() 
+    {
+      
+    }
     public void ChangeAnim(string animName)
     {
         if (currentAnim != animName)

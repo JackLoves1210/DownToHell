@@ -6,12 +6,11 @@ public class AttackState : IState<Bot>
 {
     public void OnEnter(Bot t)
     {
-
+        
     }
-
     public void OnExecute(Bot t)
     {
-
+        t.FollowPlayer();
     }
 
     public void OnExit(Bot t)

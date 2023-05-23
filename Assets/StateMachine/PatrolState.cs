@@ -11,7 +11,14 @@ public class PatrolState : IState<Bot>
 
     public void OnExecute(Bot t)
     {
-
+        if (t.isCanATT)
+        {
+            t.ChangeState(new AttackState());
+        }
+        else
+        {
+            t.Moving();
+        }  
     }
 
     public void OnExit(Bot t)

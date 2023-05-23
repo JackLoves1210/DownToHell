@@ -6,6 +6,14 @@ using UnityEngine.Events;
 
 public class GameManager : Singleton<GameManager>
 {
+    public AnimationCurve AnimationCurve;
+
+    private void Start()
+    {
+        float x = AnimationCurve.Evaluate(0.5f);
+    }
+
+  
     //[SerializeField] UserData userData;
     //[SerializeField] CSVData csv;
     //private static GameState gameState = GameState.MainMenu;

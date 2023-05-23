@@ -13,11 +13,29 @@ public class Constant
     public const string ANIM_ULTI = "ulti";
 
     public const string TAG_CHARACTER = "Character";
+    public const string TAG_EXP = "Exp";
     public const string TAG_BOT = "Bot";
     public const string TAG_PLAYER = "Player";
     public const string TAG_BLOCK = "Block";
 
     public const int FRIST_INDEX = 0;
 
+    
+}
+public enum WeaponType
+{
+    Gun = PoolType.Gun,
+    Cone = PoolType.Cone,
+    Circle = PoolType.Circle,
+}
 
+public enum BulletType
+{
+    MachineGun = PoolType.MachineGun,
+    ShootGon = PoolType.ShootGon,
+    Sniper = PoolType.Sniper,
+    FlameThrower = PoolType.FlameThrower,
+    Acid = PoolType.Acid,
+    ElectricZone = PoolType.ElectricZone,
+    AtomicZone = PoolType.AtomicZone,
 }
