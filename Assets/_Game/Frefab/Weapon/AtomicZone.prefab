@@ -46,5 +46,6 @@ MonoBehaviour:
   poolType: 0
   timeBettwenShoot: 1.2
   weaponModel: {fileID: 0}
-  bulletType: 13
-  damageWeapon: 0
+  bulletType: 14
+  damageWeapon: 10
+  isCanAttack: 1

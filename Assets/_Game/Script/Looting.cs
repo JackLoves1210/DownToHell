@@ -9,7 +9,6 @@ public class Looting : MonoBehaviour
     {
         if (other.CompareTag(Constant.TAG_EXP))
         {
-            Debug.Log("exp");
             Exp exp = Cache.GetExp(other);
             exp.MoveToTaget(player.position);
         }

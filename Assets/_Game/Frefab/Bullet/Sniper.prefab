@@ -125,9 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d9cd7bf367e8d448ac35d5a716b0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 9
+  poolType: 10
   moveSpeed: 20
-  TIME_ALIVE: 1
+  TIME_ALIVE: 0.4
   damage: 0
   isRunning: 0
   character: {fileID: 0}

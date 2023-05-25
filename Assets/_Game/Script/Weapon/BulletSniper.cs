@@ -32,6 +32,5 @@ public class BulletSniper : Bullet
             bot.DealDamage(bot.gameObject);
         }
         //  ParticlePool.Play(ParticleType.Hit, transform.position, Quaternion.identity);
-
     }
 }

@@ -14,7 +14,6 @@ public class WeaponShotgun : Weapon
         for (int i = 0; i < numberOfBullet; i++)
         {
             spreadAngle += Angle / 2; // Góc phân tán ngẫu nhiên
-            Debug.Log(spreadAngle);
             Quaternion spreadRotation = Quaternion.Euler(0f, spreadAngle, 0f); // Quay hướng phân tán
 
             Vector3 bulletDirection = spreadRotation * shootDirection; // Hướng bắn của viên đạn

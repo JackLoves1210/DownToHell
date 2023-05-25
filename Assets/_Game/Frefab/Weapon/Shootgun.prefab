@@ -46,7 +46,9 @@ MonoBehaviour:
   poolType: 0
   timeBettwenShoot: 0.5
   weaponModel: {fileID: 0}
-  bulletType: 8
-  damageWeapon: 10
-  numberOfBullet: 4
-  Angle: 37.5
+  bulletType: 9
+  damageWeapon: 10.5
+  isCanAttack: 0
+  size: 0
+  numberOfBullet: 3
+  Angle: 30

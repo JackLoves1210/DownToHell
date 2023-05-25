@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c446254b626a664995bf97d4043e6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 3
+  poolType: 4
   exp: 1200
 --- !u!136 &2073860602223804836
 CapsuleCollider:

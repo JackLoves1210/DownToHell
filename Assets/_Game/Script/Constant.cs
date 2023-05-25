@@ -17,10 +17,12 @@ public class Constant
     public const string TAG_BOT = "Bot";
     public const string TAG_PLAYER = "Player";
     public const string TAG_BLOCK = "Block";
+    public const string TAG_BULLET_BOT = "BulletBot";
+
 
     public const int FRIST_INDEX = 0;
+    public const int STAT_GROWTH = 5;
 
-    
 }
 public enum WeaponType
 {
@@ -38,4 +40,5 @@ public enum BulletType
     Acid = PoolType.Acid,
     ElectricZone = PoolType.ElectricZone,
     AtomicZone = PoolType.AtomicZone,
+    BotBullet = PoolType.BotBullet,
 }

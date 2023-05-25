@@ -145,7 +145,8 @@ public enum PoolType
 {
     None,
 
-    Bot,
+    Bot_1,
+    Bot_2,
 
     S_Exp,
     B_Exp,
@@ -161,6 +162,8 @@ public enum PoolType
     Acid,
     ElectricZone,
     AtomicZone,
+
+    BotBullet,
 }
 
 

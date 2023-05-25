@@ -8,22 +8,25 @@ public class Character : GameUnit
 
     [SerializeField] Animator animator;
 
-    public int baseDame;
-    public int moveSpeed;
-    public int armor;
+    public float baseDame;
+    public float moveSpeed;
+    public float armor;
     public float critRate;
     public float critDamage;
-    public int maxHp;
+    public float maxHp;
     public float hp;
+    public float lifeSteal;
+
+    public Weapon weaponDefault;
 
     public bool IsDead { get; protected set; }
     private string currentAnim;
     public virtual void OnInit() 
     {
-        hp = maxHp;
+        
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         int ramdomNum = Random.Range(0, 101);
         if (ramdomNum <= critRate)

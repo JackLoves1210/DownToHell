@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolType: 0
-  timeBettwenShoot: 0.12
+  timeBettwenShoot: 0.2
   weaponModel: {fileID: 0}
-  bulletType: 7
+  bulletType: 8
   damageWeapon: 10
+  isCanAttack: 1
+  size: 0

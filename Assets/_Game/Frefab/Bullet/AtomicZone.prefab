@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6885f896cda240548bd05190579882ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 13
+  poolType: 14
   moveSpeed: 10
   TIME_ALIVE: 1.2
   damage: 0
