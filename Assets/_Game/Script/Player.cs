@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,15 +18,19 @@ public class Player : Character
 
 
     //public float timeCoolDown = 0.4f;
-
     public List<Character> targets;
     public List<Passive> passives;
     
     public Weapon[] weapons;
 
+    public int limitWeapon;
+    public int limitPassive;
+
     public bool isCanMove;
     public bool isCanAtt;
     public int level;
+    public int maxExp;
+    public int realExp;
     public int exp;
     
     Vector3 targetPoint;
@@ -45,21 +49,20 @@ public class Player : Character
     }
     void Update()
     {
-       // timeCoolDown += Time.deltaTime;
-        if (targets.Count > 0)
+        if (!IsDead)
         {
-            isCanAtt = true;
-            TF.LookAt(targetPoint + (TF.position.y - targetPoint.y) * Vector3.up);
+            if (targets.Count > 0)
+            {
+                isCanAtt = true;
+                TF.LookAt(targetPoint + (TF.position.y - targetPoint.y) * Vector3.up);
+            }
+            OnAttack();
+            if (hp <= 0)
+            {
+                OnDeath();
+            }
         }
-
-        //if (timeCoolDown > timeReload && isCanAtt)
-        //{
-        //    OnAttack();
-        //    timeCoolDown = 0;
-        //}
-
-        OnAttack();
-
+        
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             //i++;
@@ -68,7 +71,6 @@ public class Player : Character
             //    i = 0;
             //}
             //weaponDefault = weapons[i];
-            //timeReload = weaponDefault.timeBettwenShoot;
         }
     }
     private void FixedUpdate()
@@ -79,17 +81,20 @@ public class Player : Character
     {
         base.OnInit();
         //OnEnablePassive();
+        realExp = maxExp;
         hp = maxHp;
         if (weaponDefault == null)
         {
             weaponDefault = AttributeManager.Ins.weapons[i];
-            weaponDefault.OnRest();
+           // weaponDefault.OnRest();
+        }   
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            weapons[i].OnRest();
         }
         EnableATTWeapon();
         isCanMove = true;
         movementCurve.AddKey(0.5f, moveSpeed);
-        //timeReload = weaponDefault.timeBettwenShoot;
-        //timeCoolDown = 10;
         healthBar.UpDateHealthBar(maxHp, hp);
         
     }
@@ -98,7 +103,7 @@ public class Player : Character
         
         if (weaponDefault != null && weaponDefault.isCanAttack)
         {
-            weaponDefault.damageWeapon = baseDame;
+            //weaponDefault.damageWeapon = baseDame;
             weaponDefault.Shooting(this, targetPoint);
         }
 
@@ -106,7 +111,7 @@ public class Player : Character
         {
             if (weaponBonous[i] != null && weaponBonous[i].isCanAttack)
             {
-                weaponBonous[i].damageWeapon = baseDame;
+                //weaponBonous[i].damageWeapon = baseDame;
                 weaponBonous[i].Shooting(this, targetPoint);
             }
         }
@@ -142,7 +147,9 @@ public class Player : Character
     {
         if (weapon == weaponDefault)
         {
-            weaponDefault.timeBettwenShoot -= weaponDefault.timeBettwenShoot * 0.1f;
+            weaponDefault.timeBettwenShoot -= weaponDefault.timeBettwenShoot * 0.1f; // tăng số lượng đạn
+            weaponDefault.damageWeapon += weaponDefault.damageWeapon * 0.2f;        // tăng dame vk
+            weaponDefault.timeBulletAlive += weaponDefault.timeBulletAlive * 0.2f;   // tăng tầm đánh vk
             weaponDefault.powerUps++;
             return true;
         }
@@ -152,7 +159,9 @@ public class Player : Character
             {
                 if (weapon == weaponBonous[i])
                 {
-                    weaponBonous[i].timeBettwenShoot -= weaponBonous[i].timeBettwenShoot * 0.1f;
+                    weaponBonous[i].timeBettwenShoot -= weaponBonous[i].timeBettwenShoot * 0.1f;  
+                    weaponBonous[i].damageWeapon += weaponBonous[i].damageWeapon * 0.2f;
+                    weaponBonous[i].timeBulletAlive += weaponBonous[i].timeBulletAlive * 0.2f;
                     weaponBonous[i].powerUps++;
                     return true;
                 }
@@ -242,20 +251,56 @@ public class Player : Character
         }
  
     }
-    public void TakeExp(int amount)
+    public override void OnDeath()
+    {
+        base.OnDeath();
+        IsDead = true;
+        UIManager.Ins.OpenUI<GamePlay>().CloseDirectly();
+        UIManager.Ins.OpenUI<Lose>();
+    }
+    public void OnRevive()
+    {
+        OnInit();
+        ResetPosition();
+        IsDead = false;
+        target = null;
+        targets.Clear();
+    }
+    private void ResetPosition()
+    {
+        TF.position = Vector3.zero;
+        TF.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+    }
+    public void TakeExp(int amount, int expToLevelUp)
     {
         exp += amount;
-        if (exp >= 1000)
+        if (exp >= expToLevelUp)
         {
-            LevelUp((int)exp / 1000);
+            LevelUp((int)exp / expToLevelUp);
             exp %=1000; 
         }
+    }
+
+    public void HandleExpBonus()
+    {
+        float expBonus = maxExp * (level * Random.Range(1, 7)/(float)10);
+        Debug.Log(expBonus);
+        realExp = (int)expBonus;
     }
     public void LevelUp(int amount)
     {
          level+= amount;
          HealHp(amount * 10);
+         HandleExpBonus();
          Debug.Log("level up");
+         HandleEventLevelUp();
+    }
+    public void HandleEventLevelUp()
+    {
+        UIManager.Ins.OpenUI<GamePlay>().Close(0);
+        Time.timeScale = 0;
+        UIManager.Ins.OpenUI<LevelUp>();
+
     }
     public void RemoveTarget(Character character)
     {
@@ -271,7 +316,7 @@ public class Player : Character
         if (collision.gameObject.CompareTag(Constant.TAG_CHARACTER) && timeReceiveDameCounter < 0)
         {
             timeReceiveDameCounter = timeReceiveDame;
-            DealDamage(this.gameObject);
+            DealDamage(this.gameObject, collision.gameObject.GetComponent<Character>().baseDame);
             healthBar.UpDateHealthBar(maxHp, hp);
         }
     }

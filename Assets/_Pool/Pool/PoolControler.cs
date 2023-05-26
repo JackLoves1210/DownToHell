@@ -164,6 +164,15 @@ public enum PoolType
     AtomicZone,
 
     BotBullet,
+
+    Map_1,
+    Map_2,
+    Map_3,
+    Map_4,
+    Map_5,
+    Map_6,
+    Map_7,
+
 }
 
 

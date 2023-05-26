@@ -51,12 +51,12 @@ public class Character : GameUnit
             hp = maxHp;
         }
     }
-    public void DealDamage(GameObject target)
+    public void DealDamage(GameObject target,float dameSender)
     {
         var atm = target.GetComponent<Character>();
         if (atm != null)
         {
-            atm.TakeDamage(baseDame);
+            atm.TakeDamage(dameSender);
         }
     }
     public virtual void OnHit() { }

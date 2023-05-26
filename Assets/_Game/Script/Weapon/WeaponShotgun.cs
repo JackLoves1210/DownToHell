@@ -6,6 +6,13 @@ public class WeaponShotgun : Weapon
 {
     public int numberOfBullet;
     public float Angle = 30;
+    public override void OnRest()
+    {
+        base.OnRest();
+        timeBettwenShoot = 0.4f;
+        timeBulletAlive = 0.4f;
+        size = 0;
+    }
     public override void Shooting(Character character, Vector3 target)
     {
         base.Shooting(character, target);
@@ -19,6 +26,7 @@ public class WeaponShotgun : Weapon
             Vector3 bulletDirection = spreadRotation * shootDirection; // Hướng bắn của viên đạn
             Bullet bullet = SimplePool.Spawn<Bullet>((PoolType)bulletType, character.TF.position, Quaternion.identity);
             bullet.damage = damageWeapon;
+            bullet.timeAlive = timeBulletAlive;
             bullet.OnInit(character, target);
             bullet.GetComponent<Rigidbody>().velocity = bulletDirection * bullet.moveSpeed; //, ForceMode.Impulse);
         }

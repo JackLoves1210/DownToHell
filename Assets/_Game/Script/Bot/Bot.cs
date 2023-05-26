@@ -18,10 +18,10 @@ public class Bot : Character
 
     public bool isCanATT;
     public bool isRoaming;
+    public bool isMoving;
 
     //shoot
     public bool isShootable = false;
-    public GameObject bullet;
     public float bulletSpeed;
     public float timeBtwFire;
     public float fireCoolDown;
@@ -75,14 +75,6 @@ public class Bot : Character
             }
         }
     }
-    public void EnemyFireBullet()
-    {
-        var bulletTmp = Instantiate(bullet, TF.position,Quaternion.identity);
-        Rigidbody rb = bulletTmp.GetComponent<Rigidbody>();
-        Vector3 direction = player.TF.position - TF.position;
-        rb.velocity = direction * bulletSpeed ;
-        
-    }
 
     public override void OnHit()
     {
@@ -132,9 +124,9 @@ public class Bot : Character
     {
         base.OnDeath();
         FallingExp();
-        SimplePool.Despawn(this);
+        OnDespawn();
         ReSpawn();
-        LevelManger.Ins.Player.RemoveTarget(this);
+        LevelManger.Ins.player.RemoveTarget(this);
     }
 
     public void ReSpawn()
@@ -142,25 +134,35 @@ public class Bot : Character
         OnInit();
         if (isRoaming)
         {
-            BotManager.Ins.SpawnBotRoaming();
+            BotManager.Ins.SpawnBot(PoolType.Bot_2);
         }
         else
         {
-            BotManager.Ins.SpawnBot();
+            BotManager.Ins.SpawnBot(PoolType.Bot_1);
         }
+    }
+
+    public void OnDespawn()
+    {
+        this.IsDead = false;
+        SimplePool.Despawn(this);
+        //BotManager.Ins.bots.Remove(this);
     }
     public void FallingExp()
     {
-        int rand = Random.Range(0, 2);
-        Exp exp = SimplePool.Spawn<Exp>(exps[rand], TF.position, Quaternion.identity);
-        exp.TF.position = new Vector3(exp.TF.position.x, exp.TF.position.y - 0.8f, exp.TF.position.z);
+        int rand = Random.Range(0, 20);
         if (rand == 0)
         {
-            exp.exp = Random.Range(50, 1000);
+            Exp exp = SimplePool.Spawn<Exp>(exps[1], TF.position, Quaternion.identity);
+            exp.TF.position = new Vector3(exp.TF.position.x, exp.TF.position.y - 0.8f, exp.TF.position.z);
+            exp.exp = Random.Range(999, 4444);
         }
         else
         {
-            exp.exp = Random.Range(1000, 4444);
+            Exp exp = SimplePool.Spawn<Exp>(exps[0], TF.position, Quaternion.identity);
+            exp.TF.position = new Vector3(exp.TF.position.x, exp.TF.position.y - 0.8f, exp.TF.position.z);
+            exp.exp = Random.Range(50, 150);
+
         }
     }
 
@@ -179,6 +181,15 @@ public class Bot : Character
         }
     }
 
+    public void StopMoving()
+    {
+        agent.enabled = false;
+    }
+    public void ActiveMoving()
+    {
+        agent.enabled = true;
+        isMoving = true;
+    }
     //private void OnCollisionEnter(Collision collision)
     //{
     //    if (collision.gameObject.CompareTag(Constant.TAG_PLAYER))

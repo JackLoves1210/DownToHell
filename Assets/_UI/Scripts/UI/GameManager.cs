@@ -6,17 +6,11 @@ using UnityEngine.Events;
 
 public class GameManager : Singleton<GameManager>
 {
-    public AnimationCurve AnimationCurve;
-
-    private void Start()
-    {
-        float x = AnimationCurve.Evaluate(0.5f);
-    }
-
+   
   
     //[SerializeField] UserData userData;
     //[SerializeField] CSVData csv;
-    //private static GameState gameState = GameState.MainMenu;
+    public static StateGame gameState;
 
     // Start is called before the first frame update
     protected void Awake()
@@ -36,20 +30,20 @@ public class GameManager : Singleton<GameManager>
         //csv.OnInit();
         //userData?.OnInitData();
 
-        //ChangeState(GameState.MainMenu);
+        ChangeState(StateGame.Mainmenu);
 
         CameraFollow.Ins.ChangeState(CameraFollow.State.Gameplay);
-        UIManager.Ins.OpenUI<GamePlay>();
+        //UIManager.Ins.OpenUI<GamePlay>();
     }
 
-    //public static void ChangeState(GameState state)
-    //{
-    //    gameState = state;
-    //}
+    public static void ChangeState(StateGame state)
+    {
+        gameState = state;
+    }
 
     //public static bool IsState(GameState state)
     //{
     //    return gameState == state;
     //}
-  
+
 }

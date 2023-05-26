@@ -31,6 +31,7 @@ public enum WeaponType
     Circle = PoolType.Circle,
 }
 
+public enum StateGame { Mainmenu, GamePlay }
 public enum BulletType
 {
     MachineGun = PoolType.MachineGun,

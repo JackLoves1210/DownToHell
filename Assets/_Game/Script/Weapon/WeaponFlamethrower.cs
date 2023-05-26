@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class WeaponFlamethrower : Weapon
 {
-  
+
+    public override void OnRest()
+    {
+        base.OnRest();
+        timeBettwenShoot = 0.3f;
+        timeBulletAlive = 0.4f;
+        size = 0;
+    }
     public override void Shooting(Character character, Vector3 target) 
     {
         Vector3 pos = (target - character.TF.position).normalized *(1 + size)  + character.TF.position ;
         base.Shooting(character, target);
         Bullet bullet = SimplePool.Spawn<Bullet>((PoolType)bulletType, pos, Quaternion.identity);
+        bullet.timeAlive = timeBulletAlive;
         bullet.damage = damageWeapon;
         bullet.OnInit(character, target);
         //Vector3 upScaleSize = bullet.defaultScaleSize + bullet.transform.localScale * 0.5f;

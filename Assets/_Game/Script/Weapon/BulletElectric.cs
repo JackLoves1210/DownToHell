@@ -12,7 +12,7 @@ public class BulletElectric :  Bullet
         base.OnInit(character, target);
         this.character = character;
         TF.forward = (target - TF.position).normalized;
-        counterTime.Start(OnDespawn, TIME_ALIVE);
+        counterTime.Start(OnDespawn, timeAlive);
         isRunning = true;
     }
 
@@ -30,7 +30,7 @@ public class BulletElectric :  Bullet
         {
             timeSendDameCounter = timeSendDame;
             Bot bot = Cache.GetBot(other);
-            bot.DealDamage(bot.gameObject);
+            bot.DealDamage(bot.gameObject,damage);
         }
     }
 }

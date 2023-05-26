@@ -5,22 +5,17 @@ using UnityEngine;
 public class Weapon : GameUnit
 {
     public float timeBettwenShoot = 0.5f;
+    public float timeBulletAlive;
     public GameObject weaponModel;
     public BulletType bulletType;
     public float damageWeapon;
     public bool isCanAttack;
     public float size;
     public int powerUps;
-    public void Start()
-    {
-        isCanAttack = true;
-    }
 
-    public void OnRest()
+    public virtual void OnRest()
     {
         powerUps = 1;
-        timeBettwenShoot = 0.4f;
-        size = 0;
         isCanAttack = true;
     }
 

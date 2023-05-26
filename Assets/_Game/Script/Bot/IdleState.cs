@@ -11,7 +11,10 @@ public class IdleState : IState<Bot>
 
     public void OnExecute(Bot t)
     {
-        t.ChangeState(new PatrolState());
+        if (t.isMoving)
+        {
+            t.ChangeState(new PatrolState());
+        }
     }
 
     public void OnExit(Bot t)

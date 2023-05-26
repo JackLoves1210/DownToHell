@@ -14,7 +14,7 @@ public class BulletFlamethrower : Bullet
         targetPoint = target;
         this.character = character;
         TF.forward = (target - TF.position).normalized;
-        counterTime.Start(OnDespawn, TIME_ALIVE);
+        counterTime.Start(OnDespawn, timeAlive);
         isRunning = true;
     }
 
@@ -33,7 +33,7 @@ public class BulletFlamethrower : Bullet
         {
             timeSendDameCounter = timeSendDame;
             Bot bot = Cache.GetBot(other);
-            bot.DealDamage(bot.gameObject);
+            bot.DealDamage(bot.gameObject,damage);
         }
     }
 }

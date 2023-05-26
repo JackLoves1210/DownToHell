@@ -36,7 +36,7 @@ public class Exp : GameUnit
         if (other.CompareTag(Constant.TAG_PLAYER))
         {
             Player player = Cache.GetPlayer(other);
-            player.TakeExp(exp);
+            player.TakeExp(exp,player.realExp);
             player.healthBar.UpDateHealthBar(player.maxHp, player.hp);
             //Destroy(this.gameObject);
             OnDespawn();

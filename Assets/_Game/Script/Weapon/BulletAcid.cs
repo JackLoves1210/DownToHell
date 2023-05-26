@@ -9,7 +9,7 @@ public class BulletAcid : Bullet
         base.OnInit(character, target);
         // this.character = character;
         //TF.forward = (target - character.TF.position).normalized;
-        counterTime.Start(OnDespawn, TIME_ALIVE);
+        counterTime.Start(OnDespawn, timeAlive);
         //isRunning = true;
     }
 
@@ -24,7 +24,7 @@ public class BulletAcid : Bullet
         {
             //OnDespawn();
             Bot bot = Cache.GetBot(other);
-            bot.DealDamage(bot.gameObject);
+            bot.DealDamage(bot.gameObject,damage);
         }
         //  ParticlePool.Play(ParticleType.Hit, transform.position, Quaternion.identity);
 

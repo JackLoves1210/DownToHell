@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : GameUnit
 {
     public float moveSpeed = 10f;
-    public float TIME_ALIVE = 1.2f;
+    public float timeAlive;
     public float damage;
     public CounterTime counterTime = new CounterTime();
     public bool isRunning;

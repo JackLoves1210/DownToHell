@@ -9,7 +9,14 @@ public class Lose : UICanvas
 
     public void MainMenuButton()
     {
-        UIManager.Ins.OpenUI<MianMenu>();
+        UIManager.Ins.OpenUI<MainMenu>();
+        Close(0);
+    }
+
+    public void PlayAgain()
+    {
+        UIManager.Ins.OpenUI<GamePlay>();
+        LevelManger.Ins.LoseGame();
         Close(0);
     }
 }
