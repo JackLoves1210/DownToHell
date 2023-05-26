@@ -13,9 +13,11 @@ public class Weapon : GameUnit
     public float size;
     public int powerUps;
 
+
     public virtual void OnRest()
     {
         powerUps = 1;
+        size = 1;
         isCanAttack = true;
     }
 

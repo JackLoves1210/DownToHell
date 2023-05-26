@@ -8,10 +8,12 @@ public class BotManager : Singleton<BotManager>
     public int quantityRangedBots;
     public List<Bot> bots;
 
+    public static float tutolDamage;
     // stats bot
     public float moveSpeed, HP, Damage;
     private void Start()
     {
+        tutolDamage = 0;
         for (int i = 0; i < quantityMeleeBots; i++)
         {
             SpawnBot(PoolType.Bot_1);

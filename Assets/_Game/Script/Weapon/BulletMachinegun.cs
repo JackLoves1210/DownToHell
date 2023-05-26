@@ -30,6 +30,7 @@ public class BulletMachinegun : Bullet
             OnDespawn();
             Bot bot = Cache.GetBot(other);
             bot.DealDamage(bot.gameObject,damage);
+            LevelManger.Ins.player.HealHp((damage * LevelManger.Ins.player.lifeSteal / (float)100));
         }
         //  ParticlePool.Play(ParticleType.Hit, transform.position, Quaternion.identity);
 

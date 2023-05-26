@@ -126,8 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolType: 15
-  moveSpeed: 10
-  timeAlive: 1.2
+  moveSpeed: 5
+  timeAlive: 2
   damage: 0
   isRunning: 0
   character: {fileID: 0}

@@ -10,9 +10,10 @@ public class WeaponAcid : Weapon
     public override void OnRest()
     {
         base.OnRest();
-        timeBettwenShoot = 0.4f;
+        timeBettwenShoot = 0.8f;
         timeBulletAlive = 0.4f;
-        size = 0;
+        damageWeapon = 1.5f;
+        numberOfBullet = 8;
     }
     public override void Shooting(Character character, Vector3 target)
     {

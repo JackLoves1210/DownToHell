@@ -128,7 +128,7 @@ MonoBehaviour:
   poolType: 10
   moveSpeed: 20
   timeAlive: 0.4
-  damage: 0
+  damage: 12
   isRunning: 0
   character: {fileID: 0}
   defaultScaleSize: {x: 0, y: 0, z: 0}

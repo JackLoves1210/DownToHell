@@ -34,6 +34,7 @@ public class BulletFlamethrower : Bullet
             timeSendDameCounter = timeSendDame;
             Bot bot = Cache.GetBot(other);
             bot.DealDamage(bot.gameObject,damage);
+            LevelManger.Ins.player.HealHp((damage * LevelManger.Ins.player.lifeSteal / (float)100));
         }
     }
 }

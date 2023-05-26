@@ -345,8 +345,8 @@ MonoBehaviour:
   - passive: 0
     statGrowth: 5
     index: 1
-  - passive: 1
-    statGrowth: 10
+  - passive: 3
+    statGrowth: 5
     index: 1
   weapons:
   - {fileID: 219784683786774976, guid: 9088f3f75e0ee1740b99b36cc9852e5a, type: 3}

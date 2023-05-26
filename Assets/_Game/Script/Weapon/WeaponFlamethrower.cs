@@ -10,7 +10,8 @@ public class WeaponFlamethrower : Weapon
         base.OnRest();
         timeBettwenShoot = 0.3f;
         timeBulletAlive = 0.4f;
-        size = 0;
+        damageWeapon = 2f;
+
     }
     public override void Shooting(Character character, Vector3 target) 
     {

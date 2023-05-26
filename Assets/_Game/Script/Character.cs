@@ -43,7 +43,7 @@ public class Character : GameUnit
             hp = 0;
         }
     }
-    public void HealHp(int healHP)
+    public void HealHp(float healHP)
     {
         hp += healHP;
         if (hp > maxHp)

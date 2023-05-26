@@ -10,8 +10,8 @@ public class WeaponShotgun : Weapon
     {
         base.OnRest();
         timeBettwenShoot = 0.4f;
-        timeBulletAlive = 0.4f;
-        size = 0;
+        timeBulletAlive = 0.5f;
+        damageWeapon = 4/(float)3;
     }
     public override void Shooting(Character character, Vector3 target)
     {

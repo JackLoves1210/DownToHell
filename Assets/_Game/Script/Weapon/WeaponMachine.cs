@@ -7,9 +7,9 @@ public class WeaponMachine : Weapon
     public override void OnRest()
     {
         base.OnRest();
-        timeBettwenShoot = 0.24f;
-        timeBulletAlive = 0.4f;
-        size = 0;
+        timeBettwenShoot = 0.25f;
+        timeBulletAlive = 0.3f;
+        damageWeapon = 2.5f;
     }
     public override void Shooting(Character character, Vector3 target)
     {
