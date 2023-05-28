@@ -57,20 +57,5 @@ public class LootPresent : MonoBehaviour
         player.AddPassive(index);
     }
 
-    private bool IsWeaponEquied(Player player , Weapon weapon)
-    {
-        for (int i = 0; i < player.weaponBonous.Count; i++)
-        {
-            if (weapon == player.weaponBonous[i])
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    private Weapon SelectWeapon(Player player)
-    {
-        int randomIndex = Random.Range(0, player.weapons.Length);
-        return player.weapons[randomIndex];
-    }
+ 
 }

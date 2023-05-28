@@ -26,6 +26,7 @@ public class LevelManger : Singleton<LevelManger>
         {
             maps[currentFloor - 1].gameObject.SetActive(true);
         }
+        AttributeManager.Ins.AttributeConfigIndex(currentFloor);
         switch (GameManager.gameState)
         {
             case StateGame.Mainmenu:
@@ -34,6 +35,7 @@ public class LevelManger : Singleton<LevelManger>
             default:
                 break;
         }
+
     }
     public void OnReset()
     {
@@ -66,6 +68,7 @@ public class LevelManger : Singleton<LevelManger>
         OnReset();
         NextLevel();
         Invoke(nameof(SpawnBot), timeWaiting);
+        UIManager.Ins.OpenUI<GamePlay>().mumberFloor = currentFloor;
         PlayerPrefs.Save();
     }
 
@@ -73,7 +76,28 @@ public class LevelManger : Singleton<LevelManger>
     public void NextLevel()
     {
         SimplePool.Despawn(maps[currentFloor - 1]);
-        currentFloor++; 
+        currentFloor++;
+        AttributeManager.Ins.AttributeConfigIndex(currentFloor);
+        if (currentFloor == 5)
+        {
+            AttributeManager.Ins.AddMoreStat();
+            AttributeManager.Ins.indexDeleted.Clear();
+        }
+        if (currentFloor == 10)
+        {
+            AttributeManager.Ins.AddMoreStat();
+            AttributeManager.Ins.indexDeleted.Clear();
+        }
+        if (currentFloor == 15)
+        {
+            AttributeManager.Ins.AddMoreStat();
+            AttributeManager.Ins.indexDeleted.Clear();
+        }
+        if (currentFloor == 20)
+        {
+            AttributeManager.Ins.AddMoreStat();
+            AttributeManager.Ins.indexDeleted.Clear();
+        }
         if (currentFloor > 19)
         {
             maps[19].gameObject.SetActive(true);

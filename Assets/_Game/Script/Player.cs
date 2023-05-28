@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Player : Character
@@ -20,11 +21,9 @@ public class Player : Character
     //public float timeCoolDown = 0.4f;
     public List<Character> targets;
     public List<Passive> passives;
-    
-    public Weapon[] weapons;
 
-    public int limitWeapon;
-    public int limitPassive;
+    public int currentNumberWeapon;
+    public int currentNumberPassive;
 
     public bool isCanMove;
     public bool isCanAtt;
@@ -88,15 +87,14 @@ public class Player : Character
             weaponDefault = AttributeManager.Ins.weapons[i];
            // weaponDefault.OnRest();
         }   
-        for (int i = 0; i < weapons.Length; i++)
+        for (int i = 0; i < AttributeManager.Ins.weapons.Length; i++)
         {
-            weapons[i].OnRest();
+            AttributeManager.Ins.weapons[i].OnRest();
         }
         EnableATTWeapon();
         isCanMove = true;
         movementCurve.AddKey(0.5f, moveSpeed);
         healthBar.UpDateHealthBar(maxHp, hp);
-        
     }
     public override void OnHit()
     {
@@ -229,6 +227,8 @@ public class Player : Character
     {
         weapon.isCanAttack = true;
         weaponBonous.Add(weapon);
+        currentNumberWeapon++;
+        AttributeManager.Ins.DeleteOtherIndexWeapon();
     }
     private void EnableATTWeapon()
     {
@@ -290,6 +290,7 @@ public class Player : Character
     public void LevelUp(int amount)
     {
          level+= amount;
+         ParticlePool.Play(ParticleType.LevelUp_1, TF.position,Quaternion.identity);
          HealHp(amount * 10);
          HandleExpBonus();
          Debug.Log("level up");

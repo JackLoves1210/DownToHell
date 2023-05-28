@@ -12,21 +12,19 @@ public class ButtonClickAttribute : MonoBehaviour
     {
         string buttonText = myButton.GetComponentInChildren<Text>().text;
         index = int.Parse(buttonText);
-        if (index != 11)
+        AttributeManager.Ins.statIndex.Remove(index);
+        if (index > 6)
         {
-            if (index > 6)
+            if (!IsLevelingUp(index - 7, levelUp.player))
             {
-                if (!IsLevelingUp(index - 7, levelUp.player))
-                {
-                    AddPassive(index - 7, levelUp.player);
-                }
+                AddPassive(index - 7, levelUp.player);
             }
-            else
+        }
+        else
+        {
+            if (!levelUp.player.IsWeaponUpgrade(AttributeManager.Ins.weapons[index]))
             {
-                if (!levelUp.player.IsWeaponUpgrade(AttributeManager.Ins.weapons[index]))
-                {
-                    levelUp.player.EquidWeapon(AttributeManager.Ins.weapons[index]);
-                }
+                levelUp.player.EquidWeapon(AttributeManager.Ins.weapons[index]);
             }
         }
         UIManager.Ins.OpenUI<GamePlay>();
@@ -56,5 +54,11 @@ public class ButtonClickAttribute : MonoBehaviour
     {
         player.passives.Add(AttributeManager.Ins.passives[index]);
         player.AddPassive(index);
+        player.currentNumberPassive++;
+        if (player.currentNumberPassive >= 2)
+        {
+            AttributeManager.Ins.DeleteOtherIndexPassive();
+        }
+        
     }
 }

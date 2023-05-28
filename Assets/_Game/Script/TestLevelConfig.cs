@@ -14,7 +14,7 @@ public class TestLevelConfig : MonoBehaviour
     private void Start()
     {
         currentLevel = CalculatePlayerLevel();
-        Debug.Log("Player Level: " + currentLevel);
+        //Debug.Log("Player Level: " + currentLevel);
     }
 
     private void Update()

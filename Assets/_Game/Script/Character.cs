@@ -19,7 +19,7 @@ public class Character : GameUnit
 
     public Weapon weaponDefault;
 
-    public bool IsDead { get; protected set; }
+    public bool IsDead;//{ get; protected set; }
     private string currentAnim;
     public virtual void OnInit() 
     {

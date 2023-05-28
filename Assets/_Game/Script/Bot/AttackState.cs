@@ -21,6 +21,11 @@ public class AttackState : IState<Bot>
                 t.OnHit();
             }
         }
+        if (t.player.IsDead)
+        {
+            t.isCanATT = false;
+            t.ChangeState(new IdleState());
+        }
     }
 
     public void OnExit(Bot t)

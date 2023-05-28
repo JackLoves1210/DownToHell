@@ -44,9 +44,9 @@ public class BotManager : Singleton<BotManager>
 
     public void BotPowerUpgrade(Bot bot,float moveSpeed,float HP,float Damage, int index)
     {
-        bot.agent.speed += bot.agent.speed * moveSpeed *index;
-        bot.maxHp += bot.maxHp * HP * index;
-        bot.baseDame += bot.baseDame * Damage * index;
+        bot.agent.speed += bot.agent.speed * moveSpeed ;
+        bot.maxHp += bot.maxHp * HP ;
+        bot.baseDame += bot.baseDame * Damage ;
     }
 
 }

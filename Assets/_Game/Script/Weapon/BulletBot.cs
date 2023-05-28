@@ -30,6 +30,7 @@ public class BulletBot : Bullet
             Player player = Cache.GetPlayer(other);
             player.DealDamage(player.gameObject,damage);
             player.healthBar.UpDateHealthBar(player.maxHp, player.hp);
+            ParticlePool.Play(ParticleType.Hit_1, TF.position, Quaternion.identity);
             OnDespawn();
         }
     }

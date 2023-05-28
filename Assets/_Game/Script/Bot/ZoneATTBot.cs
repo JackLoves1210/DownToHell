@@ -9,9 +9,13 @@ public class ZoneATTBot : MonoBehaviour
     {
         if (other.CompareTag(Constant.TAG_PLAYER))
         {
-            bot.isCanATT = true;
             Player player = Cache.GetPlayer(other);
-            bot.player = player;
+            if (!player.IsDead)
+            {
+                bot.isCanATT = true;
+                bot.player = player;
+            }
+            else bot.isCanATT = false; 
         }
     }
 
