@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,16 +37,10 @@ public class BotManager : Singleton<BotManager>
         {
             Vector3 pos = RamdomBot.Ins.GetRandomPointOnNavMesh();
             Bot bot = SimplePool.Spawn<Bot>(poolType, pos, Quaternion.identity);
-            BotPowerUpgrade(bot, moveSpeed, HP, Damage,numberOfFloor);
+            bot.BotPowerUpgrade(bot, moveSpeed, HP, Damage,numberOfFloor);
+            //BotPowerUpgrade(bot, numberOfFloor);
             bots.Add(bot);
         }
-    }
-
-    public void BotPowerUpgrade(Bot bot,float moveSpeed,float HP,float Damage, int index)
-    {
-        bot.agent.speed += bot.agent.speed * moveSpeed ;
-        bot.maxHp += bot.maxHp * HP ;
-        bot.baseDame += bot.baseDame * Damage ;
     }
 
 }

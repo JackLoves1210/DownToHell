@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 79218098b3fefa3439dd3d8c0ce0f468, type: 2}
+  - {fileID: 2100000, guid: 0869f8854ec7df945a616a3562a102a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,3 +132,4 @@ MonoBehaviour:
   isRunning: 0
   character: {fileID: 0}
   defaultScaleSize: {x: 0, y: 0, z: 0}
+  projectileParticle: {fileID: 692309866223325409, guid: 094f589a5da12a241b4c24ccdfc790f7, type: 3}

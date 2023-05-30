@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using VoxelArsenal;
 public class BulletElectric :  Bullet
 {
     public float timeSendDame = 0.5f;
@@ -32,7 +32,7 @@ public class BulletElectric :  Bullet
             Bot bot = Cache.GetBot(other);
             bot.DealDamage(bot.gameObject,damage);
             LevelManger.Ins.player.HealHp((damage * LevelManger.Ins.player.lifeSteal / (float)100));
-            ParticlePool.Play(ParticleType.Hit_1, TF.position, Quaternion.identity);
+            ParticlePool.Play(ParticleType.BulletExplosionBlue, bot.TF.position, Quaternion.identity);
         }
     }
 }

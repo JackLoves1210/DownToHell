@@ -132,3 +132,4 @@ MonoBehaviour:
   isRunning: 0
   character: {fileID: 0}
   defaultScaleSize: {x: 0, y: 0, z: 0}
+  projectileParticle: {fileID: -886780594702550250, guid: e29a0222579168a4ba95f9f016c1c014, type: 3}

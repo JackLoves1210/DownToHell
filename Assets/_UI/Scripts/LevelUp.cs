@@ -12,7 +12,6 @@ public class LevelUp : UICanvas
 
     public int index;
     public GameObject[] panelAttribute;
-    public RectTransform[] rectTransformTarget;
 
     public List<GameObject> gameObjects;
 
@@ -42,13 +41,13 @@ public class LevelUp : UICanvas
     public int StatIndex()
     {
         int num = Random.Range(0, AttributeManager.Ins.statIndex.Count);
-        
+
         return AttributeManager.Ins.statIndex[num];
     }
 
     public int RandomNumber()
     {
-        int num =  Random.Range(0, 11);
+        int num = Random.Range(0, 11);
         if (IsMaxPowerUp(player))
         {
             return 11;
@@ -98,7 +97,7 @@ public class LevelUp : UICanvas
         return num;
     }
 
-    public void SpawnPanel(int index , Button button)
+    public void SpawnPanel(int index, Button button)
     {
         for (int i = 0; i < panelAttribute.Length; i++)
         {

@@ -30,6 +30,7 @@ public class Player : Character
     public int level;
     public int maxExp;
     public int realExp;
+    public float rateGrownExp;
     public int exp;
     
     Vector3 targetPoint;
@@ -101,7 +102,6 @@ public class Player : Character
         
         if (weaponDefault != null && weaponDefault.isCanAttack)
         {
-            //weaponDefault.damageWeapon = baseDame;
             weaponDefault.Shooting(this, targetPoint);
         }
 
@@ -109,7 +109,6 @@ public class Player : Character
         {
             if (weaponBonous[i] != null && weaponBonous[i].isCanAttack)
             {
-                //weaponBonous[i].damageWeapon = baseDame;
                 weaponBonous[i].Shooting(this, targetPoint);
             }
         }
@@ -219,7 +218,8 @@ public class Player : Character
                 rb.MovePosition(rb.position + JoystickControl.direct * moveSpeed * Time.fixedDeltaTime);
               //  ChangeAnim(Constant.ANIM_RUN);
                 Vector3 direction = Vector3.RotateTowards(transform.forward, JoystickControl.direct, rotateSpeed * Time.deltaTime, 0.0f);
-                transform.rotation = Quaternion.LookRotation(direction);
+                TF.rotation = Quaternion.LookRotation(direction);
+               
             }
         }
     }
@@ -260,7 +260,7 @@ public class Player : Character
     }
     public void OnRevive()
     {
-        OnInit();
+        healthBar.UpDateHealthBar(maxHp, hp);                                
         ResetPosition();
         IsDead = false;
         target = null;
@@ -268,7 +268,7 @@ public class Player : Character
     }
     private void ResetPosition()
     {
-        TF.position = Vector3.zero;
+        TF.position = new Vector3(0,0.5f,0);
         TF.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
     }
     public void TakeExp(int amount, int expToLevelUp)
@@ -280,11 +280,9 @@ public class Player : Character
             exp %=1000; 
         }
     }
-
     public void HandleExpBonus()
     {
-        float expBonus = maxExp * (level * Random.Range(1, 7)/(float)10);
-        Debug.Log(expBonus);
+        float expBonus = maxExp + maxExp * rateGrownExp * level;
         realExp = (int)expBonus;
     }
     public void LevelUp(int amount)

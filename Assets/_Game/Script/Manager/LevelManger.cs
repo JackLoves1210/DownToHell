@@ -46,7 +46,7 @@ public class LevelManger : Singleton<LevelManger>
             SimplePool.Despawn(BotManager.Ins.bots[i]);
         }
         BotManager.Ins.bots.Clear();
-        // SimplePool.CollectAll();
+        SimplePool.CollectAll();
     }
 
     public void SpawnBot()
@@ -57,7 +57,9 @@ public class LevelManger : Singleton<LevelManger>
 
     public void LoseGame()
     {
+        player.hp = player.maxHp;
         OnReset();
+        maps[currentFloor - 1].gameObject.SetActive(true);
         UIManager.Ins.OpenUI<Lose>().CloseDirectly();
         Invoke(nameof(SpawnBot), timeWaiting);
         PlayerPrefs.Save();

@@ -114,7 +114,7 @@ MonoBehaviour:
   poolType: 1
   animator: {fileID: 0}
   baseDame: 10
-  moveSpeed: 5
+  moveSpeed: 3
   armor: 10
   critRate: 50
   critDamage: 1.5
@@ -122,6 +122,10 @@ MonoBehaviour:
   hp: 0
   lifeSteal: 0
   weaponDefault: {fileID: 0}
+  IsDead: 0
+  defaultMaxHp: 20
+  defaultSpeed: 3
+  defaultDamage: 10
   player: {fileID: 0}
   agent: {fileID: 983904612870335902}
   range: 20
@@ -131,8 +135,8 @@ MonoBehaviour:
   - {fileID: 2073860602223804832, guid: f957b236fd6a1924daeb492a7c2febb3, type: 3}
   isCanATT: 0
   isRoaming: 0
+  isMoving: 0
   isShootable: 0
-  bullet: {fileID: 0}
   bulletSpeed: 0
   timeBtwFire: 0
   fireCoolDown: 0
@@ -187,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 5420814001999766040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.98, z: 0}
-  m_LocalScale: {x: 12, y: 0.1, z: 12}
+  m_LocalScale: {x: 15, y: 0.1, z: 15}
   m_Children: []
   m_Father: {fileID: 983904612870335899}
   m_RootOrder: 0

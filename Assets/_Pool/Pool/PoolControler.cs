@@ -150,6 +150,13 @@ public enum ParticleType
     LevelUp_2,
     LevelUp_3,
 
+    BulletExplosionBlue,
+    BulletExplosionGreen,
+    BulletExplosionPink,
+    BulletExplosionPurple,
+    BulletExplosionRed,
+    BulletExplosionYellow,
+
 }
 
 public enum PoolType
@@ -183,6 +190,14 @@ public enum PoolType
     Map_5,
     Map_6,
     Map_7,
+
+    BulletMissileYellow,
+    BulletMissileRed,
+    BulletMissilePurple,
+    BulletMissilePink,
+    BulletMissileGreen,
+    BulletMissileBlue,
+    BulletMissileBot,
 
 }
 

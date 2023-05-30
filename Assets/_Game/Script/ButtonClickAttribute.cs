@@ -7,26 +7,30 @@ public class ButtonClickAttribute : MonoBehaviour
 {
     public LevelUp levelUp;
     public Button myButton;
-    public RectTransform rectTransformTarget;
+   
     public void GamePlayButton(int index)
     {
         string buttonText = myButton.GetComponentInChildren<Text>().text;
         index = int.Parse(buttonText);
         AttributeManager.Ins.statIndex.Remove(index);
-        if (index > 6)
+        if (index != 11)
         {
-            if (!IsLevelingUp(index - 7, levelUp.player))
+            if (index > 6)
             {
-                AddPassive(index - 7, levelUp.player);
+                if (!IsLevelingUp(index - 7, levelUp.player))
+                {
+                    AddPassive(index - 7, levelUp.player);
+                }
+            }
+            else
+            {
+                if (!levelUp.player.IsWeaponUpgrade(AttributeManager.Ins.weapons[index]))
+                {
+                    levelUp.player.EquidWeapon(AttributeManager.Ins.weapons[index]);
+                }
             }
         }
-        else
-        {
-            if (!levelUp.player.IsWeaponUpgrade(AttributeManager.Ins.weapons[index]))
-            {
-                levelUp.player.EquidWeapon(AttributeManager.Ins.weapons[index]);
-            }
-        }
+        
         UIManager.Ins.OpenUI<GamePlay>();
         levelUp.DeSpawnGameobject(levelUp.gameObjects);
         Time.timeScale = 1;

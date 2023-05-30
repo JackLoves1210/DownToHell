@@ -6,6 +6,12 @@ using UnityEngine.AI;
 public class Bot : Character
 {
     [Header("Bot")]
+
+    //default power
+    [SerializeField] private float defaultMaxHp;
+    [SerializeField] private float defaultSpeed;
+    [SerializeField] private float defaultDamage;
+
     public Player player;
     private IState<Bot> currentState;
     public NavMeshAgent agent;
@@ -190,11 +196,11 @@ public class Bot : Character
         agent.enabled = true;
         isMoving = true;
     }
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag(Constant.TAG_PLAYER))
-    //    {
-    //     //   DealDamage(collision.gameObject);
-    //    }
-    //}
+
+    public void BotPowerUpgrade(Bot bot, float moveSpeed, float HP, float Damage, int index)
+    {
+        bot.agent.speed = defaultSpeed + defaultSpeed * moveSpeed *index;
+        bot.maxHp = defaultMaxHp + defaultMaxHp * HP * index;
+        bot.baseDame = defaultDamage+ defaultDamage * Damage * index;
+    }
 }

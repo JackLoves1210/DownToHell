@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using VoxelArsenal;
 public class BulletFlamethrower : Bullet
 {
     public float timeSendDame = 0.5f; 
@@ -11,10 +11,14 @@ public class BulletFlamethrower : Bullet
     public override void OnInit(Character character, Vector3 target)
     {
         base.OnInit(character, target);
+        projectileParticle = SimplePool.Spawn<BulletMissile>(PoolType.BulletMissileRed, TF.position, Quaternion.identity);
+        projectileParticle.gameObject.GetComponent<VoxelSoundSpawn>().Play();
+        projectileParticle.gameObject.GetComponent<ParticleSystem>().Play();
+        projectileParticle.transform.parent = transform;
         targetPoint = target;
         this.character = character;
         TF.forward = (target - TF.position).normalized;
-        counterTime.Start(OnDespawn, timeAlive);
+        counterTime.Start(OnDespawnAll, timeAlive);
         isRunning = true;
     }
 
@@ -35,7 +39,7 @@ public class BulletFlamethrower : Bullet
             Bot bot = Cache.GetBot(other);
             bot.DealDamage(bot.gameObject,damage);
             LevelManger.Ins.player.HealHp((damage * LevelManger.Ins.player.lifeSteal / (float)100));
-            ParticlePool.Play(ParticleType.Hit_1, TF.position, Quaternion.identity);
+            ParticlePool.Play(ParticleType.BulletExplosionRed, bot.TF.position, Quaternion.identity);
         }
     }
 }
