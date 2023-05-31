@@ -9,6 +9,8 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private Map[] mapFrefab;
     [SerializeField] private List<Map> maps;
     [SerializeField] private Floor[] floors;
+
+    public List<Exp> exps;
     public int currentFloor;
 
     public float timeWaiting;
@@ -46,6 +48,13 @@ public class LevelManager : Singleton<LevelManager>
             SimplePool.Despawn(BotManager.Ins.bots[i]);
         }
         BotManager.Ins.bots.Clear();
+        if (exps.Count>0)
+        {
+            for (int i = 0; i < exps.Count; i++)
+            {
+                exps[i].OnDespawn();
+            }
+        }
         SimplePool.CollectAll();
     }
 

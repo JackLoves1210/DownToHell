@@ -160,7 +160,7 @@ public enum ParticleType
     LightningExplosionBlue,
 
     PlasmaExplosionYellow,
-
+    FlamethrowerToonyFire,
 }
 
 public enum PoolType
@@ -205,7 +205,7 @@ public enum PoolType
     ProtonMissileBlue,
     SniperMissilePurple,
     PlasmaMissileRed,
-
+    FlamethrowerToonyFire,
 }
 
 

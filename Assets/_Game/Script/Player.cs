@@ -53,7 +53,6 @@ public class Player : Character
         {
             if (targets.Count > 0)
             {
-                isCanAtt = true;
                 TF.LookAt(targetPoint + (TF.position.y - targetPoint.y) * Vector3.up);
             }
             OnAttack();
@@ -242,7 +241,7 @@ public class Player : Character
     {
         base.OnAttack();
         target = GetTargetInRange();
-        if (target != null && !target.IsDead )//&& weaponDefault.isCanAttack)
+        if (target != null && !target.IsDead && isCanAtt)
         {
             targetPoint = target.TF.position;
             

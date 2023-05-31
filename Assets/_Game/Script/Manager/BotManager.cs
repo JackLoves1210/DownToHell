@@ -26,8 +26,8 @@ public class BotManager : Singleton<BotManager>
 
     public void SpawnBot(PoolType poolType)
     {
-        Vector3 pos = RamdomBot.Ins.GetRandomPointOnNavMesh();
-        pos = new Vector3(pos.x, 0, pos.z);
+        Vector3 pos = RamdomBot.Ins.RandomPoint();
+        //pos = new Vector3(pos.x, 0, pos.z);
         Bot bot = SimplePool.Spawn<Bot>(poolType, pos, Quaternion.identity);
         bots.Add(bot);
     }
@@ -36,8 +36,8 @@ public class BotManager : Singleton<BotManager>
     {
         for (int i = 0; i < quantity; i++)
         {
-            Vector3 pos = RamdomBot.Ins.GetRandomPointOnNavMesh();
-            pos = new Vector3(pos.x, 0, pos.z);
+            Vector3 pos = RamdomBot.Ins.RandomPoint();
+            //pos = new Vector3(pos.x, 0, pos.z);
             Bot bot = SimplePool.Spawn<Bot>(poolType, pos, Quaternion.identity);
             bot.BotPowerUpgrade(bot, moveSpeed, HP, Damage,numberOfFloor);
             //BotPowerUpgrade(bot, numberOfFloor);

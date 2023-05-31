@@ -168,7 +168,8 @@ public class Bot : Character
 
         Exp exp = SimplePool.Spawn<Exp>(exps[0], TF.position, Quaternion.identity);
         exp.TF.position = new Vector3(exp.TF.position.x, exp.TF.position.y - 0.8f, exp.TF.position.z);
-        exp.exp = Random.Range(LevelManager.Ins.player.realExp/10, LevelManager.Ins.player.realExp / 3);
+        exp.exp = Random.Range(LevelManager.Ins.player.realExp/20, LevelManager.Ins.player.realExp / 5);
+        LevelManager.Ins.exps.Add(exp);
 
     }
 

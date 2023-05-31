@@ -104,7 +104,7 @@ MonoBehaviour:
   armor: 10
   critRate: 50
   critDamage: 1.5
-  maxHp: 20
+  maxHp: 10
   hp: 0
   lifeSteal: 0
   weaponDefault: {fileID: 0}

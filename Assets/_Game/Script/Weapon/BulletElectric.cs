@@ -11,7 +11,7 @@ public class BulletElectric :  Bullet
     {
         base.OnInit(character, target);
         this.character = character;
-        TF.forward = (target - TF.position).normalized;
+        //TF.forward = (target - TF.position).normalized + Vector3.up;
         counterTime.Start(OnDespawn, timeAlive);
         isRunning = true;
     }
@@ -21,7 +21,7 @@ public class BulletElectric :  Bullet
     {
         counterTime.Execute();
         TF.position = Vector3.Lerp(TF.position, character.TF.position, Time.deltaTime * 10);
-
+        TF.rotation = Quaternion.identity;
     }
     private void OnTriggerStay(Collider other)
     {
@@ -33,6 +33,7 @@ public class BulletElectric :  Bullet
             bot.DealDamage(bot.gameObject,damage);
             LevelManager.Ins.player.HealHp((damage * LevelManager.Ins.player.lifeSteal / (float)100));
             ParticlePool.Play(ParticleType.LightningExplosionBlue, bot.TF.position, Quaternion.identity);
+
             AudioManager.Ins.Play(Constant.SOUND_ELECTRIC);
         }
     }

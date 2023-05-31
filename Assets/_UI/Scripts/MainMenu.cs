@@ -12,6 +12,7 @@ public class MainMenu : UICanvas
             BotManager.Ins.bots[i].ActiveMoving();
         }
         Time.timeScale = 1;
+        LevelManager.Ins.player.isCanAtt = true;
         UIManager.Ins.OpenUI<GamePlay>().UpDateExpBar(LevelManager.Ins.player.realExp, LevelManager.Ins.player.exp);
         Close(0);
     }

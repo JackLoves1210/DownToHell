@@ -649,6 +649,10 @@ MonoBehaviour:
     amount: 0
     collect: 0
   - root: {fileID: 1471814419}
+    prefab: {fileID: 2962257748403775774, guid: 7c1b627e705f998448adac9689c44505, type: 3}
+    amount: 0
+    collect: 0
+  - root: {fileID: 1471814419}
     prefab: {fileID: 5852269003572869888, guid: 4ba2ffaa8e1385240a33d993504b5e59, type: 3}
     amount: 0
     collect: 0
@@ -692,6 +696,10 @@ MonoBehaviour:
   - root: {fileID: 1471814419}
     particleType: 17
     prefab: {fileID: 198211621401103282, guid: 8bdb08963325e2046b4142b18a6c79af, type: 3}
+    amount: 10
+  - root: {fileID: 1471814419}
+    particleType: 18
+    prefab: {fileID: 7563431112551886494, guid: 18c7b74a227aca240bdd605d706f299f, type: 3}
     amount: 10
 --- !u!4 &538985593
 Transform:
@@ -1199,65 +1207,66 @@ MonoBehaviour:
   maps: []
   floors:
   - floor: 1
-    quantityMeleeBots: 10
-    quantityRangedBots: 5
-  - floor: 2
     quantityMeleeBots: 15
+    quantityRangedBots: 8
+  - floor: 2
+    quantityMeleeBots: 20
     quantityRangedBots: 10
   - floor: 3
-    quantityMeleeBots: 10
-    quantityRangedBots: 10
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
   - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
-  - floor: 4
-    quantityMeleeBots: 10
-    quantityRangedBots: 15
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 5
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 6
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 7
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 8
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 9
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 10
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 11
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 12
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 13
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 14
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 15
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 16
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 17
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 18
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 19
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  - floor: 20
+    quantityMeleeBots: 20
+    quantityRangedBots: 12
+  exps: []
   currentFloor: 1
   timeWaiting: 2
 --- !u!1 &1150069841
@@ -1782,6 +1791,7 @@ MonoBehaviour:
   mapFrefab: []
   maps: []
   floors: []
+  exps: []
   currentFloor: 0
   timeWaiting: 0
 --- !u!1 &1560478762

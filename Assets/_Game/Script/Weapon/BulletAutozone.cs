@@ -11,7 +11,6 @@ public class BulletAutozone : Bullet
     {
         base.OnInit(character, target);
         this.character = character;
-        TF.forward = (target - TF.position).normalized;
         counterTime.Start(OnDespawn, timeAlive);
         isRunning = true;
     }
@@ -21,7 +20,7 @@ public class BulletAutozone : Bullet
     {
         counterTime.Execute();
         TF.position = Vector3.Lerp(TF.position, character.TF.position, Time.deltaTime * 10);
-
+        TF.rotation = Quaternion.identity;
     }
     private void OnTriggerStay(Collider other)
     {

@@ -11,10 +11,10 @@ public class BulletFlamethrower : Bullet
     public override void OnInit(Character character, Vector3 target)
     {
         base.OnInit(character, target);
-        projectileParticle = SimplePool.Spawn<BulletMissile>(PoolType.PlasmaMissileRed, TF.position, Quaternion.identity);
+        projectileParticle = SimplePool.Spawn<BulletMissile>(PoolType.FlamethrowerToonyFire, TF.position, Quaternion.identity);
         projectileParticle.gameObject.GetComponent<VoxelSoundSpawn>().Play();
         projectileParticle.gameObject.GetComponent<ParticleSystem>().Play();
-        projectileParticle.TF.localScale = TF.localScale *4;
+       // projectileParticle.TF.localScale = TF.localScale *4;
         projectileParticle.transform.parent = transform;
         targetPoint = target;
         this.character = character;
