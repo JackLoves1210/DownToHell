@@ -16,7 +16,7 @@ public class Lose : UICanvas
     public void PlayAgain()
     {
         UIManager.Ins.OpenUI<GamePlay>();
-        LevelManger.Ins.LoseGame();
+        LevelManager.Ins.LoseGame();
         Close(0);
     }
 }

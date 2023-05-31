@@ -605,7 +605,7 @@ MonoBehaviour:
     amount: 0
     collect: 0
   - root: {fileID: 1390427434}
-    prefab: {fileID: 3134805841959007921, guid: 158452561611d24438497cd83f8a5036, type: 3}
+    prefab: {fileID: 8739392173875971630, guid: 158452561611d24438497cd83f8a5036, type: 3}
     amount: 0
     collect: 0
   - root: {fileID: 378920229}
@@ -644,6 +644,14 @@ MonoBehaviour:
     prefab: {fileID: 692309866223325409, guid: 094f589a5da12a241b4c24ccdfc790f7, type: 3}
     amount: 0
     collect: 0
+  - root: {fileID: 1471814419}
+    prefab: {fileID: 7834845381297020531, guid: f366b8890ab10604b9463da9b26b0216, type: 3}
+    amount: 0
+    collect: 0
+  - root: {fileID: 1471814419}
+    prefab: {fileID: 5852269003572869888, guid: 4ba2ffaa8e1385240a33d993504b5e59, type: 3}
+    amount: 0
+    collect: 0
   Particle:
   - root: {fileID: 1471814419}
     particleType: 0
@@ -676,6 +684,14 @@ MonoBehaviour:
   - root: {fileID: 1471814419}
     particleType: 15
     prefab: {fileID: 198114382706122378, guid: b561a4527d3c815478647bd40a5096aa, type: 3}
+    amount: 10
+  - root: {fileID: 1471814419}
+    particleType: 16
+    prefab: {fileID: 198709578183081364, guid: e154cd5e457b2eb4baa055b74289ddea, type: 3}
+    amount: 10
+  - root: {fileID: 1471814419}
+    particleType: 17
+    prefab: {fileID: 198211621401103282, guid: 8bdb08963325e2046b4142b18a6c79af, type: 3}
     amount: 10
 --- !u!4 &538985593
 Transform:
@@ -1440,6 +1456,86 @@ Transform:
   m_Father: {fileID: 538985593}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1392563297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1392563298}
+  - component: {fileID: 1392563299}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1392563298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392563297}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1509698527}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1392563299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392563297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a4ee5436a682114389df6862252fb46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Electric
+    clip: {fileID: 8300000, guid: 8ff9dcef931efda428594d93138467be, type: 3}
+    volume: 0.347
+    pitch: 0.8
+    spatialBlend: 0
+    source: {fileID: 0}
+    loop: 0
+  - name: Atomic
+    clip: {fileID: 8300000, guid: dc403cf4cff963d439f2e6cb65e1c474, type: 3}
+    volume: 0.356
+    pitch: 0.8
+    spatialBlend: 0
+    source: {fileID: 0}
+    loop: 0
+  - name: Lose
+    clip: {fileID: 8300000, guid: de68f3f567f5588428a472baf23b8164, type: 3}
+    volume: 0.6
+    pitch: 0.8
+    spatialBlend: 0
+    source: {fileID: 0}
+    loop: 0
+  - name: Die
+    clip: {fileID: 8300000, guid: bbee60b264cccc6438fe3db32fa49a49, type: 3}
+    volume: 0.6
+    pitch: 0.8
+    spatialBlend: 0
+    source: {fileID: 0}
+    loop: 0
+  - name: Levelup
+    clip: {fileID: 8300000, guid: 33fe37df6f8941f41873905c32673130, type: 3}
+    volume: 0.6
+    pitch: 0.8
+    spatialBlend: 0
+    source: {fileID: 0}
+    loop: 0
+  isCanVibrate: 1
 --- !u!1 &1438722591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,6 +1762,7 @@ Transform:
   - {fileID: 1178239708}
   - {fileID: 1057726891}
   - {fileID: 1471241005}
+  - {fileID: 1392563298}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1950,10 +2047,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

@@ -1,104 +1,59 @@
-﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class Setting : UICanvas
 {
-    public GameObject statWeapon;
-    public GameObject statPassive;
-    public TMP_Text maxHpTxt;
-    public TMP_Text baseDamageTxt;
-    public TMP_Text moveSpeedTxt;
-    public TMP_Text lifeStealTxt;
-    // powẻr up
-    public TMP_Text powerUpMachineTxt;
-    public TMP_Text powerUpShotgunTxt;
-    public TMP_Text powerUpSniperTxt;
-    public TMP_Text powerUpFlameTxt;
-    public TMP_Text powerUpAcidTxt;
-    public TMP_Text powerUpElectricTxt;
-    public TMP_Text powerUpAutozoneTxt;
-    public TMP_Text powerUpMaxHpTxt;
-    public TMP_Text powerUpMoveSpeedTxt;
-    public TMP_Text powerUpBaseDamageTxt;
-    public TMP_Text powerUpLifeStealTxt;
-    
 
-
-    List<int> indexWeapon = new List<int>();
-    public override void Open()
-    {
-        base.Open();
-        UpdateTxt();
-        UpdateStatWeapon();
-        UpdateStatPassive();
-        Time.timeScale = 0;
-        
-    }
     public void ContinueButton()
     {
         Close(0);
         Time.timeScale = 1;
     }
+    [SerializeField] private GameObject btnTurnOffSound;
+    [SerializeField] private GameObject btnTurnOnSound;
+    [SerializeField] private GameObject btnTurnOffVibration;
+    [SerializeField] private GameObject btnTurnOnVibration;
 
-    public void UpdateTxt()
+    public override void Open()
     {
-        maxHpTxt.text = LevelManger.Ins.player.maxHp.ToString();
-        baseDamageTxt.text = LevelManger.Ins.player.baseDame.ToString();
-        moveSpeedTxt.text = LevelManger.Ins.player.moveSpeed.ToString();
-        lifeStealTxt.text = LevelManger.Ins.player.lifeSteal.ToString() + "%";
-        //
-        powerUpMachineTxt.text = LevelManger.Ins.player.weaponDefault.powerUps.ToString();
-        powerUpShotgunTxt.text = AttributeManager.Ins.weapons[1].powerUps.ToString();
-        powerUpSniperTxt.text = AttributeManager.Ins.weapons[2].powerUps.ToString();
-        powerUpFlameTxt.text = AttributeManager.Ins.weapons[3].powerUps.ToString();
-        powerUpAcidTxt.text = AttributeManager.Ins.weapons[4].powerUps.ToString();
-        powerUpElectricTxt.text = AttributeManager.Ins.weapons[5].powerUps.ToString();
-        powerUpAutozoneTxt.text = AttributeManager.Ins.weapons[6].powerUps.ToString();
-        powerUpMaxHpTxt.text = LevelManger.Ins.player.passives[0].index.ToString();
-        powerUpMoveSpeedTxt.text = LevelManger.Ins.player.passives[1].index.ToString();
-        powerUpBaseDamageTxt.text = LevelManger.Ins.player.passives[2].index.ToString();
-        powerUpLifeStealTxt.text = LevelManger.Ins.player.passives[3].index.ToString();
+        base.Open();
+        Time.timeScale = 0;
+
+    }
+    public void ButtonHome()
+    {
+        UIManager.Ins.OpenUI<MainMenu>();
+        LevelManager.Ins.LoseGame();
+        UIManager.Ins.OpenUI<GamePlay>().CloseDirectly();
+        Close(0);
     }
 
-    public void UpdateStatWeapon()
+    public void MuteOnSound()
     {
-        statWeapon.transform.GetChild(0).gameObject.SetActive(true);
-        
-        CheckStatWeapon();
-        
+        AudioManager.Ins.MuteHandler(false);
+        btnTurnOffSound.SetActive(false);
+        btnTurnOnSound.SetActive(true);
     }
 
-    public void CheckStatWeapon()
+    public void MuteOffSound()
     {
-        foreach (var value in LevelManger.Ins.player.weaponBonous)
-        {
-            int index = Array.IndexOf(AttributeManager.Ins.weapons, value);
-            if (index != -1)
-            {
-                indexWeapon.Add(index);
-            }
-        }
-        if (indexWeapon.Count > 0)
-        {
-            for (int i = 0; i < indexWeapon.Count; i++)
-            {
-                statWeapon.transform.GetChild(indexWeapon[i]).gameObject.SetActive(true);
-            }
-        } 
+        AudioManager.Ins.MuteHandler(true);
+        btnTurnOffSound.SetActive(true);
+        btnTurnOnSound.SetActive(false);
     }
-    public void UpdateStatPassive()
+    public void MuteOnVibration()
     {
-        CheckStatPassive();
+        AudioManager.Ins.MuteHandleVibrater(true);
+        btnTurnOffVibration.SetActive(true);
+        btnTurnOnVibration.SetActive(false);
     }
 
-    public void CheckStatPassive()
+    public void MuteOffVibration()
     {
-        for (int i = 0; i < statPassive.transform.childCount; i++)
-        {
-            statPassive.transform.GetChild(i).gameObject.SetActive(true);
-        }
+        AudioManager.Ins.MuteHandleVibrater(false);
+        btnTurnOffVibration.SetActive(false);
+        btnTurnOnVibration.SetActive(true);
+
     }
 }

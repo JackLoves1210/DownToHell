@@ -7,9 +7,9 @@ public class RamdomBot : Singleton<RamdomBot>
 {
     public  Vector3 GetRandomPointOnNavMesh()
     {
-        Vector3 randomPoint = Random.insideUnitSphere * 100f; // Lấy một điểm ngẫu nhiên trong hình cầu bán kính 100
+        Vector3 randomPoint = Random.insideUnitSphere * 100f; 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPoint, out hit, 100f, NavMesh.AllAreas)) // Tìm kiếm điểm gần nhất trên NavMesh
+        if (NavMesh.SamplePosition(randomPoint, out hit, 100f, NavMesh.AllAreas))
         {
             return hit.position;
         }

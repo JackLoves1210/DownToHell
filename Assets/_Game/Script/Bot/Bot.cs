@@ -25,6 +25,7 @@ public class Bot : Character
     public bool isCanATT;
     public bool isRoaming;
     public bool isMoving;
+    public bool isFollowPlayer;
 
     //shoot
     public bool isShootable = false;
@@ -112,6 +113,14 @@ public class Bot : Character
         }
     }
 
+    public void FollowPlayer()
+    {
+        if (player != null)
+        {
+            agent.SetDestination(player.TF.position);
+        }
+    }
+
     bool IsDestination(Vector3 targetPoint) => Vector3.Distance(transform.position, targetPoint) - Mathf.Abs(transform.position.y - targetPoint.y) < 0.1f;
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
@@ -132,7 +141,7 @@ public class Bot : Character
         FallingExp();
         OnDespawn();
         ReSpawn();
-        LevelManger.Ins.player.RemoveTarget(this);
+        LevelManager.Ins.player.RemoveTarget(this);
     }
 
     public void ReSpawn()
@@ -156,20 +165,11 @@ public class Bot : Character
     }
     public void FallingExp()
     {
-        int rand = Random.Range(0, 20);
-        if (rand == 0)
-        {
-            Exp exp = SimplePool.Spawn<Exp>(exps[1], TF.position, Quaternion.identity);
-            exp.TF.position = new Vector3(exp.TF.position.x, exp.TF.position.y - 0.8f, exp.TF.position.z);
-            exp.exp = Random.Range(999, 4444);
-        }
-        else
-        {
-            Exp exp = SimplePool.Spawn<Exp>(exps[0], TF.position, Quaternion.identity);
-            exp.TF.position = new Vector3(exp.TF.position.x, exp.TF.position.y - 0.8f, exp.TF.position.z);
-            exp.exp = Random.Range(50, 150);
 
-        }
+        Exp exp = SimplePool.Spawn<Exp>(exps[0], TF.position, Quaternion.identity);
+        exp.TF.position = new Vector3(exp.TF.position.x, exp.TF.position.y - 0.8f, exp.TF.position.z);
+        exp.exp = Random.Range(LevelManager.Ins.player.realExp/10, LevelManager.Ins.player.realExp / 3);
+
     }
 
     public void ChangeState(IState<Bot> state)

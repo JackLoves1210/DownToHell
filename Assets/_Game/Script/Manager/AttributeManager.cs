@@ -37,7 +37,7 @@ public class AttributeManager : Singleton<AttributeManager>
     {
         for (int i = 0; i < passives.Length; i++)
         {
-            if (passive == passives[i])
+            if (passive.passive == passives[i].passive)// && passives[i].index ==0)
             {
                 Debug.Log(i);
                 return i;
@@ -86,11 +86,11 @@ public class AttributeManager : Singleton<AttributeManager>
 
     public void DeleteOtherIndexWeapon()
     {
-        if (LevelManger.Ins.player.currentNumberWeapon == numberWeapon)
+        if (LevelManager.Ins.player.currentNumberWeapon == numberWeapon)
         {
-            for (int i = 0; i < LevelManger.Ins.player.weaponBonous.Count; i++)
+            for (int i = 0; i < LevelManager.Ins.player.weaponBonous.Count; i++)
             {
-                currentIndexWeapons.Add(CheckIndexWeapon(LevelManger.Ins.player.weaponBonous[i]));
+                currentIndexWeapons.Add(CheckIndexWeapon(LevelManager.Ins.player.weaponBonous[i]));
             }
 
             var remainingIndexes = weapons.Select((weapon, index) => index).Except(currentIndexWeapons);
@@ -104,17 +104,21 @@ public class AttributeManager : Singleton<AttributeManager>
     }
     public void DeleteOtherIndexPassive()
     {
-        if (LevelManger.Ins.player.currentNumberPassive == numberPassives)
+        if (LevelManager.Ins.player.currentNumberPassive == numberPassives)
         {
-            for (int i = 0; i < LevelManger.Ins.player.passives.Count; i++)
+            for (int i = 0; i < LevelManager.Ins.player.passives.Count; i++)
             {
-                currentIndexPassives.Add(CheckIndexPassive(LevelManger.Ins.player.passives[i]));
+                if (LevelManager.Ins.player.passives[i].index != 0 )
+                {
+                    currentIndexPassives.Add(CheckIndexPassive(LevelManager.Ins.player.passives[i]));
+                }
             }
 
             var remainingIndexes = passives.Select((passive, index) => index).Except(currentIndexPassives);
 
             foreach (int index in remainingIndexes)
             {
+                Debug.Log(index + 7);
                 indexDeleted.Add(index + 7);
                 statIndex.RemoveAll(x => x == index+7);
             }

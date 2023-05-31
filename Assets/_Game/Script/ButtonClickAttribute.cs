@@ -45,9 +45,18 @@ public class ButtonClickAttribute : MonoBehaviour
         {
             if (index == (int)player.passives[i].passive)
             {
+                if (player.passives[i].index == 0)
+                {
+                    player.passives[i].index += 1;
+                    player.passives[i].statGrowth = 5 * player.passives[i].index;
+                    player.AddPassive(index);
+                    
+                    return false;
+                }
                 player.passives[i].index += 1;
                 player.passives[i].statGrowth = 5 * player.passives[i].index;
                 player.AddPassive(index);
+
                 return true;
             }
         }
@@ -56,7 +65,6 @@ public class ButtonClickAttribute : MonoBehaviour
     }
     public void AddPassive(int index, Player player)
     {
-        player.passives.Add(AttributeManager.Ins.passives[index]);
         player.AddPassive(index);
         player.currentNumberPassive++;
         if (player.currentNumberPassive >= 2)

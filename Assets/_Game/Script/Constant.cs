@@ -19,6 +19,11 @@ public class Constant
     public const string TAG_BLOCK = "Block";
     public const string TAG_BULLET_BOT = "BulletBot";
 
+    public const string SOUND_ELECTRIC = "Electric";
+    public const string SOUND_ATOMIC = "Atomic";
+    public const string SOUND_LOST = "Lost";
+    public const string SOUND_DIE = "Die";
+    public const string SOUND_LEVELUP = "Levelup";
 
     public const int FRIST_INDEX = 0;
     public const int STAT_GROWTH = 5;

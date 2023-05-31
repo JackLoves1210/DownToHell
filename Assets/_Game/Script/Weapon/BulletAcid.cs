@@ -29,7 +29,7 @@ public class BulletAcid : Bullet
             //OnDespawn();
             Bot bot = Cache.GetBot(other);
             bot.DealDamage(bot.gameObject,damage);
-            LevelManger.Ins.player.HealHp((damage * LevelManger.Ins.player.lifeSteal / (float)100));
+            LevelManager.Ins.player.HealHp((damage * LevelManager.Ins.player.lifeSteal / (float)100));
             ParticlePool.Play(ParticleType.BulletExplosionGreen, bot.TF.position, Quaternion.identity);
             SimplePool.Despawn(projectileParticle);
             

@@ -7,7 +7,7 @@ public class BulletBot : Bullet
     public override void OnInit(Character character, Vector3 target)
     {
         base.OnInit(character, target);
-        projectileParticle = SimplePool.Spawn<BulletMissile>(PoolType.BulletMissileYellow, TF.position, Quaternion.identity);
+        projectileParticle = SimplePool.Spawn<BulletMissile>(PoolType.ProtonMissileBlue, TF.position, Quaternion.identity);
         projectileParticle.gameObject.GetComponent<VoxelSoundSpawn>().Play();
         projectileParticle.gameObject.GetComponent<ParticleSystem>().Play();
         projectileParticle.TF.parent = TF;
@@ -34,6 +34,7 @@ public class BulletBot : Bullet
             player.DealDamage(player.gameObject,damage);
             player.healthBar.UpDateHealthBar(player.maxHp, player.hp);
             ParticlePool.Play(ParticleType.Hit_1, TF.position, Quaternion.identity);
+            AudioManager.Ins.Play(Constant.SOUND_DIE);
             OnDespawn();
             DespawnSFX();
         }

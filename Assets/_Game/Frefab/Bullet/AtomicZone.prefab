@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6329756115137941026}
   - component: {fileID: 6329756115137941028}
   - component: {fileID: 6167734201603543173}
-  - component: {fileID: 3134805841959007921}
+  - component: {fileID: 8739392173875971630}
   m_Layer: 0
   m_Name: AtomicZone
   m_TagString: Untagged
@@ -113,7 +113,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3134805841959007921
+--- !u!114 &8739392173875971630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6329756115137941030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6885f896cda240548bd05190579882ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 4657ce2da49b2524c908b79e66b6739f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolType: 14

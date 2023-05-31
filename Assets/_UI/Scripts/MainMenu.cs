@@ -11,8 +11,8 @@ public class MainMenu : UICanvas
         {
             BotManager.Ins.bots[i].ActiveMoving();
         }
-        
-        UIManager.Ins.OpenUI<GamePlay>();
+        Time.timeScale = 1;
+        UIManager.Ins.OpenUI<GamePlay>().UpDateExpBar(LevelManager.Ins.player.realExp, LevelManager.Ins.player.exp);
         Close(0);
     }
 }

@@ -7,8 +7,8 @@ public class Waiting : UICanvas
     public override void Open()
     {
         base.Open();
-        LevelManger.Ins.NextLevelGame();
-        Invoke(nameof(WaitTiming), LevelManger.Ins.timeWaiting);
+        LevelManager.Ins.NextLevelGame();
+        Invoke(nameof(WaitTiming), LevelManager.Ins.timeWaiting);
     }
     public void WaitTiming()
     {

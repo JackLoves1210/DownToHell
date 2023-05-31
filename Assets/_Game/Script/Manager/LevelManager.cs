@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManger : Singleton<LevelManger>
+public class LevelManager : Singleton<LevelManager>
 {
     public Player player;
     //public StateGame stateGame;

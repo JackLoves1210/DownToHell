@@ -7,7 +7,7 @@ public class BulletSniper : Bullet
     public override void OnInit(Character character, Vector3 target)
     {
         base.OnInit(character, target);
-        projectileParticle = SimplePool.Spawn<BulletMissile>(PoolType.BulletMissilePurple, TF.position, Quaternion.identity);
+        projectileParticle = SimplePool.Spawn<BulletMissile>(PoolType.SniperMissilePurple, TF.position, Quaternion.identity);
         projectileParticle.gameObject.GetComponent<VoxelSoundSpawn>().Play();
         projectileParticle.gameObject.GetComponent<ParticleSystem>().Play();
         projectileParticle.transform.parent = transform;
@@ -34,7 +34,7 @@ public class BulletSniper : Bullet
            // OnDespawn();
             Bot bot = Cache.GetBot(other);
             bot.DealDamage(bot.gameObject,damage);
-            LevelManger.Ins.player.HealHp((damage * LevelManger.Ins.player.lifeSteal / (float)100));
+            LevelManager.Ins.player.HealHp((damage * LevelManager.Ins.player.lifeSteal / (float)100));
             ParticlePool.Play(ParticleType.BulletExplosionPurple, bot.TF.position, Quaternion.identity);
         }
         

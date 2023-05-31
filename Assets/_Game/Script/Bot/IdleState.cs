@@ -11,6 +11,11 @@ public class IdleState : IState<Bot>
 
     public void OnExecute(Bot t)
     {
+        if (t.isFollowPlayer)
+        {
+            t.FollowPlayer();
+        }
+
         if (t.isMoving)
         {
             t.ChangeState(new PatrolState());

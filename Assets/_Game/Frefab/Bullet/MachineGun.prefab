@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7148723405396688355}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.2}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -132,6 +132,4 @@ MonoBehaviour:
   isRunning: 0
   character: {fileID: 0}
   defaultScaleSize: {x: 0, y: 0, z: 0}
-  impactParticle: {fileID: 1627691104547190, guid: b561a4527d3c815478647bd40a5096aa, type: 3}
   projectileParticle: {fileID: 1640460157358976694, guid: e9caea2b0e584d74fbcd0a04ac3575bf, type: 3}
-  muzzleParticle: {fileID: 1774566695181044, guid: a8dc29f7c32baba448bba7fefcfc3cd6, type: 3}

@@ -11,9 +11,10 @@ public class BulletFlamethrower : Bullet
     public override void OnInit(Character character, Vector3 target)
     {
         base.OnInit(character, target);
-        projectileParticle = SimplePool.Spawn<BulletMissile>(PoolType.BulletMissileRed, TF.position, Quaternion.identity);
+        projectileParticle = SimplePool.Spawn<BulletMissile>(PoolType.PlasmaMissileRed, TF.position, Quaternion.identity);
         projectileParticle.gameObject.GetComponent<VoxelSoundSpawn>().Play();
         projectileParticle.gameObject.GetComponent<ParticleSystem>().Play();
+        projectileParticle.TF.localScale = TF.localScale *4;
         projectileParticle.transform.parent = transform;
         targetPoint = target;
         this.character = character;
@@ -38,7 +39,7 @@ public class BulletFlamethrower : Bullet
             timeSendDameCounter = timeSendDame;
             Bot bot = Cache.GetBot(other);
             bot.DealDamage(bot.gameObject,damage);
-            LevelManger.Ins.player.HealHp((damage * LevelManger.Ins.player.lifeSteal / (float)100));
+            LevelManager.Ins.player.HealHp((damage * LevelManager.Ins.player.lifeSteal / (float)100));
             ParticlePool.Play(ParticleType.BulletExplosionRed, bot.TF.position, Quaternion.identity);
         }
     }

@@ -255,6 +255,7 @@ public class Player : Character
     {
         base.OnDeath();
         IsDead = true;
+        AudioManager.Ins.Play(Constant.SOUND_LOST);
         UIManager.Ins.OpenUI<GamePlay>().CloseDirectly();
         UIManager.Ins.OpenUI<Lose>();
     }
@@ -279,6 +280,7 @@ public class Player : Character
             LevelUp((int)exp / expToLevelUp);
             exp %=1000; 
         }
+        UIManager.Ins.OpenUI<GamePlay>().UpDateExpBar(realExp,exp);
     }
     public void HandleExpBonus()
     {
@@ -291,13 +293,14 @@ public class Player : Character
          ParticlePool.Play(ParticleType.LevelUp_1, TF.position,Quaternion.identity);
          HealHp(amount * 10);
          HandleExpBonus();
-         Debug.Log("level up");
+         UIManager.Ins.OpenUI<GamePlay>().NumberLevel();
          HandleEventLevelUp();
     }
     public void HandleEventLevelUp()
     {
         UIManager.Ins.OpenUI<GamePlay>().Close(0);
         Time.timeScale = 0;
+        AudioManager.Ins.Play(Constant.SOUND_LEVELUP);
         UIManager.Ins.OpenUI<LevelUp>();
 
     }
@@ -317,6 +320,7 @@ public class Player : Character
             timeReceiveDameCounter = timeReceiveDame;
             DealDamage(this.gameObject, collision.gameObject.GetComponent<Character>().baseDame);
             healthBar.UpDateHealthBar(maxHp, hp);
+            AudioManager.Ins.Play(Constant.SOUND_DIE);
         }
     }
 

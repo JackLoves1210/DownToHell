@@ -18,7 +18,7 @@ public class PatrolState : IState<Bot>
         else
         {
             t.Moving();
-        }  
+        }
     }
 
     public void OnExit(Bot t)

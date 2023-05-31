@@ -31,8 +31,9 @@ public class BulletElectric :  Bullet
             timeSendDameCounter = timeSendDame;
             Bot bot = Cache.GetBot(other);
             bot.DealDamage(bot.gameObject,damage);
-            LevelManger.Ins.player.HealHp((damage * LevelManger.Ins.player.lifeSteal / (float)100));
-            ParticlePool.Play(ParticleType.BulletExplosionBlue, bot.TF.position, Quaternion.identity);
+            LevelManager.Ins.player.HealHp((damage * LevelManager.Ins.player.lifeSteal / (float)100));
+            ParticlePool.Play(ParticleType.LightningExplosionBlue, bot.TF.position, Quaternion.identity);
+            AudioManager.Ins.Play(Constant.SOUND_ELECTRIC);
         }
     }
 }
