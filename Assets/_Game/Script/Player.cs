@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class Player : Character
 {
-    public enum Status { alive, dead };
     [Header("Player")]
-    Status status;
     public List<Weapon> weaponBonous;
 
     [SerializeField] protected Character target;
@@ -68,14 +66,12 @@ public class Player : Character
     public override void OnInit()
     {
         base.OnInit();
-        status = Status.alive;
         //OnEnablePassive();
         realExp = maxExp;
         hp = maxHp;
         if (weaponDefault == null)
         {
             weaponDefault = AttributeManager.Ins.weapons[i];
-           // weaponDefault.OnRest();
         }   
         for (int i = 0; i < AttributeManager.Ins.weapons.Length; i++)
         {
@@ -247,7 +243,6 @@ public class Player : Character
     {
         base.OnDeath();
         IsDead = true;
-        status = Status.dead;
         AudioManager.Ins.Play(Constant.SOUND_LOST);
         UIManager.Ins.OpenUI<GamePlay>().ActiveJoystick(false);
         UIManager.Ins.OpenUI<GamePlay>().Close(0);

@@ -356,7 +356,7 @@ MonoBehaviour:
   maxHp: 100
   hp: 0
   lifeSteal: 0
-  weaponDefault: {fileID: 0}
+  weaponDefault: {fileID: -5763965698272701107, guid: ae5e755cf448ced40b07a730539ecbdc, type: 3}
   IsDead: 0
   weaponBonous: []
   target: {fileID: 0}
