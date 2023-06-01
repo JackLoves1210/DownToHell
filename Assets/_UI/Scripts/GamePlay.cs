@@ -10,6 +10,7 @@ public class GamePlay : UICanvas
     public TMP_Text numberLevelText;
     public ExpBar expBar;
     public int mumberFloor;
+    public GameObject joyStick;
 
     public override void Open()
     {
@@ -39,5 +40,10 @@ public class GamePlay : UICanvas
     public  void StatsButton()
     {
         UIManager.Ins.OpenUI<Stat>();
+    }
+
+    public void ActiveJoystick(bool active)
+    {
+        joyStick.SetActive(active);
     }
 }

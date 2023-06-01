@@ -603,6 +603,7 @@ MonoBehaviour:
   numberLevelText: {fileID: 7053413845289018556}
   expBar: {fileID: 3688428677106842344}
   mumberFloor: 0
+  joyStick: {fileID: 5934262371739233372}
 --- !u!1 &4546850543713268643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,6 +1102,11 @@ PrefabInstance:
 --- !u!224 &5934262371739233360 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2192423507969868791, guid: 36a44ddad5df99945a1c494532d50c50, type: 3}
+  m_PrefabInstance: {fileID: 5492053704946839463}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5934262371739233372 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2192423507969868795, guid: 36a44ddad5df99945a1c494532d50c50, type: 3}
   m_PrefabInstance: {fileID: 5492053704946839463}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8190650085294626829

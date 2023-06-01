@@ -9,7 +9,7 @@ public class RamdomBot : Singleton<RamdomBot>
 
     public Vector3 RandomPoint()
     {
-        Vector3 randPoint = Random.Range(minPoint.position.x, maxPoint.position.x) * Vector3.right + Random.Range(minPoint.position.z, maxPoint.position.z) * Vector3.forward;
+        Vector3 randPoint = Random.Range(minPoint.position.x, maxPoint.position.x) * Vector3.right + Random.Range(minPoint.position.z, maxPoint.position.z) * Vector3.forward + Vector3.up;
 
         NavMeshHit hit;
 

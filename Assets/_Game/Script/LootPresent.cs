@@ -9,22 +9,9 @@ public class LootPresent : MonoBehaviour
     {
         if (other.CompareTag(Constant.TAG_PLAYER))
         {
-            //Player player = Cache.GetPlayer(other);
-            //Weapon weapon = SelectWeapon(player);
-            //while (weapon == player.weaponDefault || IsWeaponEquied(player, weapon))
-            //{
-            //    weapon = SelectWeapon(player);
-            //}
-            //player.EquidWeapon(weapon);
+           
             HandleEventLevelUp();
             Destroy(gameObject);
-
-            //int rand = Random.Range(0, passives.Length);
-            //if (!IsLevelingUp(rand, player))
-            //{
-            //    AddPassive(rand, player);
-            //}
-            
         }
     }
 
@@ -35,27 +22,5 @@ public class LootPresent : MonoBehaviour
         UIManager.Ins.OpenUI<LevelUp>();
         
     }
-
-    public bool IsLevelingUp(int index, Player player)
-    {
-        for (int i = 0; i < player.passives.Count; i++)
-        {
-            if (index == (int)player.passives[i].passive)
-            {
-                player.passives[i].index += 1;
-                player.passives[i].statGrowth = 5 * player.passives[i].index;
-                player.AddPassive(index);
-                return true;
-            }
-        }
-        return false;
-        
-    }
-    public void AddPassive(int index , Player player)
-    {
-        player.passives.Add(passives[index]);
-        player.AddPassive(index);
-    }
-
  
 }

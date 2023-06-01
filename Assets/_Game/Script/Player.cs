@@ -5,20 +5,19 @@ using UnityEngine;
 
 public class Player : Character
 {
+    public enum Status { alive, dead };
     [Header("Player")]
-
+    Status status;
     public List<Weapon> weaponBonous;
 
     [SerializeField] protected Character target;
     [SerializeField] private float rotateSpeed;
     [SerializeField] private Rigidbody rb;
-  //  /[SerializeField] private float timeReload;
+
     [SerializeField] public HealthBar healthBar;
 
     public AnimationCurve movementCurve;
 
-
-    //public float timeCoolDown = 0.4f;
     public List<Character> targets;
     public List<Passive> passives;
 
@@ -61,16 +60,6 @@ public class Player : Character
                 OnDeath();
             }
         }
-        
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            //i++;
-            //if (i > weapons.Length-1)
-            //{
-            //    i = 0;
-            //}
-            //weaponDefault = weapons[i];
-        }
     }
     private void FixedUpdate()
     {
@@ -79,6 +68,7 @@ public class Player : Character
     public override void OnInit()
     {
         base.OnInit();
+        status = Status.alive;
         //OnEnablePassive();
         realExp = maxExp;
         hp = maxHp;
@@ -209,16 +199,19 @@ public class Player : Character
     {
         moveSpeed = movementCurve.Evaluate(time);
         time += Time.deltaTime;
-        if (isCanMove)
+        if (!IsDead)
         {
-            if (Input.GetMouseButton(0) && JoystickControl.direct != Vector3.zero)
+            if (isCanMove)
             {
-             //   _isMove = true;
-                rb.MovePosition(rb.position + JoystickControl.direct * moveSpeed * Time.fixedDeltaTime);
-              //  ChangeAnim(Constant.ANIM_RUN);
-                Vector3 direction = Vector3.RotateTowards(transform.forward, JoystickControl.direct, rotateSpeed * Time.deltaTime, 0.0f);
-                TF.rotation = Quaternion.LookRotation(direction);
-               
+                if (Input.GetMouseButton(0) && JoystickControl.direct != Vector3.zero)
+                {
+                    //   _isMove = true;
+                    rb.MovePosition(rb.position + JoystickControl.direct * moveSpeed * Time.fixedDeltaTime);
+                    //  ChangeAnim(Constant.ANIM_RUN);
+                    Vector3 direction = Vector3.RotateTowards(transform.forward, JoystickControl.direct, rotateSpeed * Time.deltaTime, 0.0f);
+                    TF.rotation = Quaternion.LookRotation(direction);
+
+                }
             }
         }
     }
@@ -254,8 +247,10 @@ public class Player : Character
     {
         base.OnDeath();
         IsDead = true;
+        status = Status.dead;
         AudioManager.Ins.Play(Constant.SOUND_LOST);
-        UIManager.Ins.OpenUI<GamePlay>().CloseDirectly();
+        UIManager.Ins.OpenUI<GamePlay>().ActiveJoystick(false);
+        UIManager.Ins.OpenUI<GamePlay>().Close(0);
         UIManager.Ins.OpenUI<Lose>();
     }
     public void OnRevive()

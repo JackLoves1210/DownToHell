@@ -22,6 +22,7 @@ public class LevelUp : UICanvas
     public override void Open()
     {
         base.Open();
+        UIManager.Ins.OpenUI<GamePlay>().CloseDirectly();
         button_1.GetComponentInChildren<Text>().text = StatIndex().ToString();
         SpawnPanel(int.Parse(button_1.GetComponentInChildren<Text>().text), button_1);
         button_2.GetComponentInChildren<Text>().text = StatIndex().ToString();
@@ -40,9 +41,12 @@ public class LevelUp : UICanvas
 
     public int StatIndex()
     {
-        int num = Random.Range(0, AttributeManager.Ins.statIndex.Count);
-
-        return AttributeManager.Ins.statIndex[num];
+        if (AttributeManager.Ins.statIndex.Count > 0)
+        {
+            int num = Random.Range(0, AttributeManager.Ins.statIndex.Count);
+            return AttributeManager.Ins.statIndex[num];
+        }
+        return 11;
     }
 
     public int RandomNumber()

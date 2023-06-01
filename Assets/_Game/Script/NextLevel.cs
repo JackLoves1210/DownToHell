@@ -8,8 +8,12 @@ public class NextLevel : MonoBehaviour
     {
         if (other.CompareTag(Constant.TAG_PLAYER))
         {
-            UIManager.Ins.OpenUI<GamePlay>().CloseDirectly();
-            UIManager.Ins.OpenUI<Waiting>();
+            Player target = Cache.GetPlayer(other);
+            if (!target.IsDead)
+            {
+                UIManager.Ins.OpenUI<GamePlay>().CloseDirectly();
+                UIManager.Ins.OpenUI<Waiting>();
+            }
         }
     }
 }
